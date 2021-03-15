@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: metadata-service
+spec:
+  containers:
+  - image: metadata-service
+    name: java-metadata-app
+    ports:
+    - containerPort: 8080
+      protocol: TCP
+    env:
+        - name: ABC
+          value: 512M
+        - name: XYZ
+          value: 100M 
+  #   imagePullPolicy: always
+  #   volumeMounts:
+  #   - name: myvolume
+  #     mountPath: path
+  # volumes:
+  # - name: myvolume
+  #   emptyDir: {}
+  # command: ["/bin/sh"]
+  # args: ["-c", "echo hello world"]

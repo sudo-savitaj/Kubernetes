@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-db
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: db
+  template:
+    metadata:
+      labels:
+        app: db
+    spec:
+      containers:
+      - name: mongo-db
+        image: mongo
+        ports:
+        - containerPort: 27017
+          protocol: TCP
+          # imagePullPolicy: IfNotPresent
+          # readinessProbe:
+          #   httpGet:
+          #     path: /metadata
+          #     port: 8080

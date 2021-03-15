@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: metadata-service
+  labels:
+    app: metadata-service
+    tier: metadata-service
+spec:
+  # modify replicas according to your case
+  replicas: 3
+  selector:
+    matchLabels:
+      tier: metadata-service
+      app: java-1
+  template:
+    metadata:
+      labels:
+        tier: metadata-service
+        app: java-1
+    spec:
+      containers:
+      - name: java-metadata-app
+        image: nitinmuteja/metadata-service:v1
